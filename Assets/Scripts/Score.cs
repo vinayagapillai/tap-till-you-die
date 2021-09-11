@@ -12,9 +12,16 @@ public class Score : MonoBehaviour
 
     public IDictionary LevelSpeed = new Dictionary<string, int>()
     {
-        {"1", 4},
-        {"2", 3},
-        {"3", 2}
+        {"1", 2},
+        {"2", 2},
+        {"3", 1},
+        {"4", 1},
+        {"5", 1},
+        {"6", 1},
+        {"7", 1},
+        {"8", 1},
+        {"9", 1},
+        {"10", 1},
     };
 
     private void Awake()
@@ -33,10 +40,64 @@ public class Score : MonoBehaviour
 
     private void Update()
     {
-        if (_instance.score >= 50 && _instance.score < 55)
-            currentLevel = "2";
-        if (_instance.score >= 60)
-            currentLevel = "3";
+        try
+        {
+            if (_instance.score < 10)
+            {
+                AudioManager.instance.PitchUP("Theme", 0.8f);
+                currentLevel = "1";
+            }
+
+            if (_instance.score >= 50 && _instance.score < 130)
+            {
+                AudioManager.instance.PitchUP("Theme", 0.9f);
+                currentLevel = "2";
+            }
+
+            if (_instance.score >= 130 && _instance.score < 230)
+            {
+                AudioManager.instance.PitchUP("Theme", 1f);
+                currentLevel = "3";
+            }
+
+            if (_instance.score >= 230 && _instance.score < 350)
+            {
+                AudioManager.instance.PitchUP("Theme", 1.2f);
+                currentLevel = "3";
+            }
+
+            if (_instance.score >= 350 && _instance.score < 450)
+            {
+                AudioManager.instance.PitchUP("Theme", 1.4f);
+                currentLevel = "4";
+            }
+
+            if (_instance.score >= 450 && _instance.score < 550)
+            {
+                AudioManager.instance.PitchUP("Theme", 1.5f);
+                currentLevel = "5";
+            }
+
+            if (_instance.score >= 550 && _instance.score < 900)
+            {
+                AudioManager.instance.PitchUP("Theme", 1.6f);
+                currentLevel = "6";
+            }
+
+            if (_instance.score >= 900 && _instance.score < 1000)
+            {
+                AudioManager.instance.PitchUP("Theme", 1.4f);
+                currentLevel = "7";
+            }
+
+            if (_instance.score >= 1000 && _instance.score < 1150)
+            {
+                AudioManager.instance.PitchUP("Theme", 1.5f);
+                currentLevel = "8";
+            }
+        }
+        catch { }
+
     }
 
 }
